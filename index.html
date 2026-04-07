@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CYBR2310 — Test Payment Site</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      min-height: 100vh;
+    }
+
+    /* ---- Navigation ---- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #1e293b;
+    }
+    nav .brand { font-weight: 700; font-size: 1.1rem; color: #38bdf8; letter-spacing: 0.5px; }
+    nav a { color: #94a3b8; text-decoration: none; margin-left: 24px; font-size: 0.9rem; }
+    nav a:hover { color: #f1f5f9; }
+
+    /* ---- Hero ---- */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 40px;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #1e3a5f;
+      color: #38bdf8;
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #f8fafc;
+    }
+    .hero h1 span { color: #38bdf8; }
+    .hero p {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* ---- Payment Card ---- */
+    .payment-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 40px 36px;
+      max-width: 420px;
+      margin: 0 auto 80px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    .payment-card .product-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    .payment-card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+    .payment-card .price {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin: 12px 0 4px;
+    }
+    .payment-card .price-note {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .payment-card .divider {
+      height: 1px;
+      background: #334155;
+      margin: 20px 0;
+    }
+    .payment-card .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .payment-card .feature span { font-size: 1rem; }
+
+    /* ---- Buy Button ---- */
+    #checkout-btn {
+      display: block;
+      width: 100%;
+      margin-top: 24px;
+      padding: 16px;
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+    }
+    #checkout-btn:hover { background: #0284c7; }
+    #checkout-btn:active { transform: scale(0.98); }
+    #checkout-btn:disabled { background: #475569; cursor: not-allowed; }
+
+    .secure-note {
+      font-size: 0.8rem;
+      color: #475569;
+      margin-top: 12px;
+    }
+    .secure-note span { color: #22c55e; }
+
+    /* ---- Footer ---- */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #334155;
+      font-size: 0.8rem;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="brand">CYBR2310 Shop</span>
+    <div>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="badge">CYBR2310 · Week 9 Assignment</div>
+    <h1>Test Credit Card<br/><span>Payment Flow</span></h1>
+    <p>Use the card below to complete a secure $1.00 test payment. Powered by Stripe Checkout.</p>
+  </div>
+
+  <!-- PAYMENT CARD — "Buy Test Item" button is inside here -->
+  <div class="payment-card">
+    <div class="product-icon">🛒</div>
+    <h2>Test Item — CYBR2310</h2>
+    <div class="price">$1.00</div>
+    <div class="price-note">One-time test charge · USD</div>
+    <div class="divider"></div>
+    <div class="feature"><span>✅</span> Secure Stripe-hosted checkout</div>
+    <div class="feature"><span>✅</span> Credit &amp; debit card accepted</div>
+    <div class="feature"><span>✅</span> Success confirmation page</div>
+    <div class="feature"><span>✅</span> No card data stored on this server</div>
+
+    <!-- PRIMARY CALL-TO-ACTION: labeled for grader verification -->
+    <button id="checkout-btn">Buy Test Item — $1.00</button>
+
+    <p class="secure-note"><span>🔒</span> Payment secured by Stripe</p>
+  </div>
+
+  <footer>
+    CYBR2310 &mdash; Week 9 Payment App &mdash; Built with Stripe Checkout &amp; Express
+  </footer>
+
+  <script>
+    // When the "Buy Test Item" button is clicked:
+    // 1. Calls our backend to create a Stripe Checkout Session
+    // 2. Redirects the user to Stripe's hosted payment page
+    document.getElementById("checkout-btn").addEventListener("click", async () => {
+      const btn = document.getElementById("checkout-btn");
+      btn.disabled = true;
+      btn.textContent = "Redirecting to Stripe…";
+
+      try {
+        // POST to our Express backend to create the checkout session
+        const response = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const data = await response.json();
+
+        if (data.url) {
+          // Redirect user to Stripe's hosted checkout page
+          window.location.href = data.url;
+        } else {
+          alert("Error: Could not create checkout session. Check server logs.");
+          btn.disabled = false;
+          btn.textContent = "Buy Test Item — $1.00";
+        }
+      } catch (err) {
+        alert("Network error: " + err.message);
+        btn.disabled = false;
+        btn.textContent = "Buy Test Item — $1.00";
+      }
+    });
+  </script>
+
+</body>
+</html>

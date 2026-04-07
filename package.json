@@ -1,0 +1,14 @@
+{
+  "name": "stripe-payment-app",
+  "version": "1.0.0",
+  "description": "CYBR2310 Week 9 - $1 Payment Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.0.0",
+    "dotenv": "^16.3.1"
+  }
+}
